@@ -1,0 +1,58 @@
+
+body {
+    direction: rtl;
+    background: #fac51c;
+    height: 100vh;
+    overflow-x: hidden;
+    font-family: IRANSansFaNo, serif;
+}
+
+.main-container {
+    top: 15%;
+    position: relative;
+}
+
+.padding-25 {
+    padding: 25px;
+}
+
+.payment-form {
+    padding: 45px 15%;
+    color: #333333;background: white;
+}
+
+.border-smooth {
+    border: solid 1px transparent;
+    border-radius: 2px;
+}
+
+.iransans {
+    font-family: IRANSansFaNo, serif !important;
+}
+
+.input-label {
+    color: #878787 !important;
+    text-align: right;
+}
+
+.input-label > * {
+    margin-left: 5px !important;
+}
+
+.submit-btn {
+    margin: 25px 0 0 0 !important;
+}
+
+.form-title {
+    color: white;
+    background: #333333;
+    font-size: 18px;
+}
+
+.msg {
+    top:25%;
+    position: relative;
+    font-size: 36px;
+    color:white;
+    font-weight: bold;
+}

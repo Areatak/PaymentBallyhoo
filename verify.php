@@ -22,11 +22,39 @@ if ($_GET['Status'] == 'OK') {
 
         $req = find_request_by_authority($Authority);
         sold($req['iaaId']);
-        echo 'Transation success. RefID:' . $result->RefID;
-        echo error_handler($result->Status);
+//        echo 'Transation success. RefID:' . $result->RefID;
+//        echo error_handler($result->Status);
     } else {
-        echo 'Transation failed. Status:' . error_handler($result->Status);
+//        echo 'Transation failed. Status:' . error_handler($result->Status);
     }
 } else {
-    echo 'Transaction canceled by user';
+    $result->Status = 1000;
+//    echo 'Transaction canceled by user';
 }
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Ballyhoo|Payment
+    </title>
+    <link rel="stylesheet" type="text/css" href="./assets/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="assets/fonts/IRANSANS/iransans.css">
+</head>
+<body>
+<div class="column three centered msg" style="text-align: center;">
+    <div class="ui container">
+        <div class="column centered" style="padding: 40px;">
+            <?= error_handler($result->Status) ?>
+        </div>
+    </div>
+</div>
+<div class="column three centered msg" style="text-align: center;">
+    <div class="ui container">
+        <button class="ui button green iransans" type="submit">بازگشت به سایت</button>
+    </div>
+</div>
+</body>
+</html>

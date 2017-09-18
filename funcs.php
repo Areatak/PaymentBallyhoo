@@ -69,7 +69,7 @@ function create_request_table()
 
 function insert_payment_request($iaaId, $authority)
 {
-    $query = "INSERT INTO `request` (`status`,`iaa_id`,`authority`) VALUES (" . 0 . "," . $iaaId . ",'" . $authority . "')";
+    $query = "INSERT INTO `request` (`status`,`iaa_id`,`authority`) VALUES (" . 0 . ",'" . $iaaId . "','" . $authority . "')";
     $result = db_query($query);
     return $result;
 }
@@ -109,7 +109,7 @@ function get_tx_info($iaaId)
     $response = curl_exec($ch);
     curl_close($ch);
 
-    return $response;
+    return json_decode($response);
 }
 
 function sold($iaaId)

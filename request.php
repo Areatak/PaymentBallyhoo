@@ -23,7 +23,7 @@ include './funcs.php';
 $config = parse_ini_file('./config.ini');
 
 create_request_table();
-
+exit;
 $iaaId = $_GET['id'];
 //$txInfo = get_tx_info($iaaId);
 

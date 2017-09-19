@@ -81,6 +81,7 @@ function insert_payment_request($iaaId, $authority)
 
 function update_payment_request($authority, $refId)
 {
+    echo $authority;
     $dt = new DateTime();
     $now = $dt->format('Y-m-d H:i:s');
     $query = "UPDATE `request` SET `status` = 1, `ref_id`= '".$refId."', `modified` = '".$now."' WHERE `authority` = '".$authority."'";

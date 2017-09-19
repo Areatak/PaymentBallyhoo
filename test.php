@@ -2,6 +2,7 @@
 include './funcs.php';
 $auth = '000000000000000000000000000053617358';
 $q = "UPDATE `request` SET `status` = 1 WHERE `authority` = '".$auth."'";
+echo $q;
 test($q);
 /**
  * Created by PhpStorm.

@@ -44,14 +44,23 @@ if ($_GET['Status'] == 'OK') {
     <link rel="stylesheet" type="text/css" href="assets/fonts/IRANSANS/iransans.css">
 </head>
 <body>
-<div class="column three centered msg" style="text-align: center;">
-    <div class="ui container">
-        <div class="column centered" style="padding: 40px;">
-            <?= error_handler($result->Status) ?>
+
+
+<div class="ui two column centered grid top-25">
+    <div class="column msg"> <?= error_handler($result->Status) ?></div>
+    <?php if ($result->Status == 100) { ?>
+        <div class="three column centered row">
+            <div class="column black result-row text-center" style="font-weight: bold;">کد پیگیری</div>
+            <div class="column green result-row text-center"><?= $result->RefID ?></div>
         </div>
-    </div>
+        <div class="three column centered row" style="margin-top: 5px;">
+            <div class="column black result-row text-center" style="font-weight: bold;">شناسه تراکنش</div>
+            <div class="column green result-row latin text-center"><?=$req["iaaId"]?></div>
+        </div>
+    <?php } ?>
 </div>
-<div class="column three centered msg" style="text-align: center;">
+
+<div class="row three centered" style="text-align: center;position: relative;top: 35%;">
     <div class="ui container">
         <button class="ui button green iransans" type="submit">بازگشت به سایت</button>
     </div>

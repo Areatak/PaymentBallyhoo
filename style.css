@@ -52,7 +52,30 @@ body {
 .msg {
     top:25%;
     position: relative;
-    font-size: 36px;
+    font-size: 24px;
     color:white;
     font-weight: bold;
+    line-height: 2;
+    text-align: center!important;
+}
+
+.text-center {
+    text-align: center!important;
+}
+
+.top-25 {
+    top:25%;
+    position: relative;
+}
+
+.result-row {
+    padding: 15px;
+}
+
+.latin {
+    font-family: Lato, sans-serif;
+}
+
+.text-left {
+    text-align: left!important;
 }

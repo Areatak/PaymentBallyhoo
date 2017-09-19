@@ -5,7 +5,7 @@
         Ballyhoo|Payment
     </title>
     <link rel="stylesheet" type="text/css" href="./assets/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="./assets/semantic.min.js">
+<!--    <link rel="stylesheet" type="text/css" href="./assets/semantic.min.js">-->
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="assets/fonts/IRANSANS/iransans.css">
 </head>

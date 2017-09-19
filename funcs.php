@@ -62,6 +62,7 @@ function create_request_table()
                           PRIMARY KEY  (ID)
                           )";
         $result = db_query($query);
+        var_dump($result);
         return $result;
     }
     return false;

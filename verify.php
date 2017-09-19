@@ -17,10 +17,11 @@ if ($_GET['Status'] == 'OK') {
         'Authority' => $Authority,
         'Amount' => $Amount,
     ]);
+    $req = find_request_by_authority($Authority);
+
     if ($result->Status == 100) {
         update_payment_request($Authority, $result->RefID);
 
-        $req = find_request_by_authority($Authority);
         sold($req['iaaId']);
 //        echo 'Transation success. RefID:' . $result->RefID;
 //        echo error_handler($result->Status);
@@ -62,7 +63,7 @@ if ($_GET['Status'] == 'OK') {
 
 <div class="row three centered" style="text-align: center;position: relative;top: 35%;">
     <div class="ui container">
-        <button class="ui button green iransans" type="button"><a href="http://ballyhooawards.ir"> بازگشت به سایت</a></button>
+        <button class="ui button green iransans" type="button"><a style="color:white;" href="http://ballyhooawards.ir"> بازگشت به سایت</a></button>
     </div>
 </div>
 </body>

@@ -29,7 +29,7 @@ function db_query($query)
     // Query the database
 //    $result = mysqli_query($connection, $query);
     $result = mysqli_query($connection,$query) or die($connection);
-
+    var_dump($result);
 //    mysql_query($query) or die(mysql_error());
 //    echo 'failed. SQL Err: '. mysqli_error($connection);
     return $result;

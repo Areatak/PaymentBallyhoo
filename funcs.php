@@ -50,7 +50,7 @@ function create_request_table()
     $query = "SELECT id FROM request";
     $table_exists = db_query($query);
 
-//    if (!$table_exists) {
+    if (!$table_exists) {
         $query = "CREATE TABLE request (
                           id int(11) AUTO_INCREMENT,
                           created DATETIME,
@@ -62,9 +62,8 @@ function create_request_table()
                           PRIMARY KEY  (ID)
                           )";
         $result = db_query($query);
-        var_dump($result);
         return $result;
-//    }
+    }
     return false;
 }
 

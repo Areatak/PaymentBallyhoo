@@ -71,7 +71,7 @@ function insert_payment_request($iaaId, $authority)
 {
     $dt = new DateTime();
     $now = $dt->format('Y-m-d H:i:s');
-    $query = "INSERT INTO `request` (`status`,`iaa_id`,`authority`,`created`) VALUES (" . 0 . ",'" . $iaaId . "','" . $authority . "'," . $now . ")";
+    $query = "INSERT INTO `request` (`status`,`iaa_id`,`authority`,`created`) VALUES (" . 0 . ",'" . $iaaId . "','" . $authority . "','" . $now . "')";
     echo $query;
     $result = db_query($query);
     var_dump($result);
@@ -83,7 +83,7 @@ function update_payment_request($authority, $refId)
 {
     $dt = new DateTime();
     $now = $dt->format('Y-m-d H:i:s');
-    $query = "UPDATE request SET status = 1, ref_id= $refId, modified=$now WHERE authority = '$authority'";
+    $query = "UPDATE request SET status = 1, ref_id= $refId, modified='$now' WHERE authority = '$authority'";
     $result = db_query($query);
     return $result;
 }

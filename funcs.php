@@ -49,7 +49,7 @@ function create_request_table()
 {
     $query = "SELECT id FROM request";
     $table_exists = db_query($query);
-
+    var_dump($table_exists);
     if (!$table_exists) {
         $query = "CREATE TABLE request (
                           id int(11) AUTO_INCREMENT,

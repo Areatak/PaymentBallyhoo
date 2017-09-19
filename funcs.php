@@ -81,6 +81,7 @@ function update_payment_request($authority, $refId)
 //    $dt = new DateTime();
 //    $now = $dt->format('Y-m-d H:i:s');
     $query = "UPDATE request SET status = 1, ref_id= $refId WHERE authority = '$authority'";
+    echo $query;
     $result = db_query($query);
     return $result;
 }

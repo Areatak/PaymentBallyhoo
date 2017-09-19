@@ -53,8 +53,8 @@ function create_request_table()
 //    if (!$table_exists) {
         $query = "CREATE TABLE request (
                           id int(11) AUTO_INCREMENT,
-                          created DATETIME DEFAULT CURRENT_TIMESTAMP,
-                          modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                          created DATETIME,
+                          modified DATETIME,
                           status INT NOT NULL,
                           iaa_id VARCHAR(255) UNIQUE NOT NULL,
                           authority VARCHAR(255) NOT NULL,

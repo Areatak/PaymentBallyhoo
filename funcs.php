@@ -47,7 +47,7 @@ function db_quote($value)
 
 function create_request_table()
 {
-    $query = "SELECT ID FROM REQUEST";
+    $query = "SELECT id FROM request";
     $table_exists = db_query($query);
 
     if (!$table_exists) {

@@ -84,11 +84,13 @@ function update_payment_request($authority, $refId)
     $dt = new DateTime();
     $now = $dt->format('Y-m-d H:i:s');
     $query = "UPDATE `request` SET `status` = 1, `ref_id`= '".$refId."', `modified` = '".$now."' WHERE `authority` = '".$authority."'";
-    echo $query;
-    $result = db_query($query);
-    var_dump($result);
+    $q = "UPDATE `request` SET `status` = 1, `ref_id`='".$refId."' WHERE `authority` = '".$authority."'";
+    test($q);
+    echo $q;
+//    $result = db_query($q);
+//    var_dump($result);
     exit;
-    return $result;
+    return true;
 }
 
 

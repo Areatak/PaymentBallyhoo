@@ -29,7 +29,7 @@ function db_query($query)
     // Query the database
     $result = mysqli_query($connection, $query);
 //    mysql_query($query) or die(mysql_error());
-    echo 'failed. SQL Err: '. mysql_error();
+    echo 'failed. SQL Err: '. mysqli_error();
     echo $result;
     return $result;
 }
@@ -88,6 +88,13 @@ function update_payment_request($authority, $refId)
     var_dump($result);
     exit;
     return $result;
+}
+
+
+function test ($q) {
+//    $query = "UPDATE `request` SET `status` = 1 WHERE `authority` = '".$auth."'";
+    $result = db_query($q);
+    var_dump($result);
 }
 
 function find_request_by_authority($authority)

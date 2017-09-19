@@ -93,6 +93,7 @@ function find_request_by_authority($authority)
             $ret = array("iaaId" => $row['iaa_id'], "status" => $row['status']);
         }
     }
+    var_dump($ret);
     $connection->close();
     return $ret;
 }

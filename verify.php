@@ -37,7 +37,7 @@ if ($_GET['Status'] == 'OK') {
 <html>
 <head>
     <title>
-        Ballyhoo|Payment
+        BallyhooAwards.ir|Payment
     </title>
     <link rel="stylesheet" type="text/css" href="./assets/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -62,7 +62,7 @@ if ($_GET['Status'] == 'OK') {
 
 <div class="row three centered" style="text-align: center;position: relative;top: 35%;">
     <div class="ui container">
-        <button class="ui button green iransans" type="submit">بازگشت به سایت</button>
+        <button class="ui button green iransans" type="button"><a href="http://ballyhooawards.ir"> بازگشت به سایت</a></button>
     </div>
 </div>
 </body>

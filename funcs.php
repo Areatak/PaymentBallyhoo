@@ -87,8 +87,8 @@ function update_payment_request($authority, $refId)
     echo $now;
     $query = "UPDATE `request` SET `status` = 1, `ref_id`= '".$refId."', `modified` = '".$now."' WHERE `authority` = '".$authority."'";
     $q = "UPDATE `request` SET ref_id= $refId WHERE authority = $authority";
-    test($q);
     echo $q;
+    test($q);
 //    $result = db_query($q);
 //    var_dump($result);
     exit;
@@ -100,6 +100,7 @@ function test ($q) {
 //    $query = "UPDATE `request` SET `status` = 1 WHERE `authority` = '".$auth."'";
     $result = db_query($q);
     var_dump($result);
+    return true;
 }
 
 function find_request_by_authority($authority)

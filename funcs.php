@@ -28,9 +28,10 @@ function db_query($query)
 
     // Query the database
     $result = mysqli_query($connection, $query);
+    mysqli_query($connection,$query) or die(mysqli_error($connection));
+
 //    mysql_query($query) or die(mysql_error());
-    echo 'failed. SQL Err: '. mysqli_error($connection);
-    echo $result;
+//    echo 'failed. SQL Err: '. mysqli_error($connection);
     return $result;
 }
 

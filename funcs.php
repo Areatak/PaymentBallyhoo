@@ -83,6 +83,7 @@ function update_payment_request($authority, $refId)
     $query = "UPDATE `request` SET `status` = 1, `ref_id`= '".$refId."', `modified` = '".$now."' WHERE `authority` = '".$authority."'";
     echo $query;
     $result = db_query($query);
+    var_dump($result);
     exit;
     return $result;
 }

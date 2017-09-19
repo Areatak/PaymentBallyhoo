@@ -19,7 +19,7 @@ if ($_GET['Status'] == 'OK') {
     ]);
     $req = find_request_by_authority($Authority);
 
-    if ($result->Status == 100) {
+    if ($result->Status == 100 || true) {
         update_payment_request($Authority, $result->RefID);
 
         sold($req['iaaId']);

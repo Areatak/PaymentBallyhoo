@@ -78,9 +78,9 @@ function insert_payment_request($iaaId, $authority)
 
 function update_payment_request($authority, $refId)
 {
-    $dt = new DateTime();
-    $now = $dt->format('Y-m-d H:i:s');
-    $query = "UPDATE request SET status = 1, ref_id= $refId, modified = '$now' WHERE authority = '$authority'";
+//    $dt = new DateTime();
+//    $now = $dt->format('Y-m-d H:i:s');
+    $query = "UPDATE request SET status = 1, ref_id= $refId WHERE authority = '$authority'";
     $result = db_query($query);
     return $result;
 }
@@ -97,7 +97,6 @@ function find_request_by_authority($authority)
             $ret = array("iaaId" => $row['iaa_id'], "status" => $row['status']);
         }
     }
-    var_dump($ret);
     $connection->close();
     return $ret;
 }

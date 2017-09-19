@@ -72,10 +72,7 @@ function insert_payment_request($iaaId, $authority)
     $dt = new DateTime();
     $now = $dt->format('Y-m-d H:i:s');
     $query = "INSERT INTO `request` (`status`,`iaa_id`,`authority`,`created`) VALUES (" . 0 . ",'" . $iaaId . "','" . $authority . "','" . $now . "')";
-    echo $query;
     $result = db_query($query);
-    var_dump($result);
-    exit;
     return $result;
 }
 

@@ -49,8 +49,9 @@ function create_request_table()
 {
     $query = "SELECT id FROM request";
     $table_exists = db_query($query);
-    var_dump($table_exists);
-    $q2 = "CREATE TABLE request (
+
+//    if (!$table_exists) {
+        $query = "CREATE TABLE request (
                           id int(11) AUTO_INCREMENT,
                           created DATETIME DEFAULT CURRENT_TIMESTAMP,
                           modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -60,22 +61,27 @@ function create_request_table()
                           ref_id VARCHAR(255),
                           PRIMARY KEY  (ID)
                           )";
-    $result = db_query($q2);
-    var_dump($result);
-    return $result;
+        $result = db_query($query);
+        var_dump($result);
+        return $result;
+//    }
     return false;
 }
 
 function insert_payment_request($iaaId, $authority)
 {
-    $query = "INSERT INTO `request` (`status`,`iaa_id`,`authority`) VALUES (" . 0 . ",'" . $iaaId . "','" . $authority . "')";
+    $dt = new DateTime();
+    $now = $dt->format('Y-m-d H:i:s');
+    $query = "INSERT INTO `request` (`status`,`iaa_id`,`authority`,`created`) VALUES (" . 0 . ",'" . $iaaId . "','" . $authority . "'," . $now . ")";
     $result = db_query($query);
     return $result;
 }
 
 function update_payment_request($authority, $refId)
 {
-    $query = "UPDATE request SET status = 1, ref_id= $refId WHERE authority = '$authority'";
+    $dt = new DateTime();
+    $now = $dt->format('Y-m-d H:i:s');
+    $query = "UPDATE request SET status = 1, ref_id= $refId, modified=$now WHERE authority = '$authority'";
     $result = db_query($query);
     return $result;
 }

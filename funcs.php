@@ -50,7 +50,7 @@ function create_request_table()
     $query = "SELECT id FROM request";
     $table_exists = db_query($query);
     var_dump($table_exists);
-    $query = "CREATE TABLE request (
+    $q2 = "CREATE TABLE request (
                           id int(11) AUTO_INCREMENT,
                           created DATETIME DEFAULT CURRENT_TIMESTAMP,
                           modified DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -60,7 +60,7 @@ function create_request_table()
                           ref_id VARCHAR(255),
                           PRIMARY KEY  (ID)
                           )";
-    $result = db_query($query);
+    $result = db_query($q2);
     var_dump($result);
     return $result;
     return false;

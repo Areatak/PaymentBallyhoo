@@ -4,18 +4,9 @@ $config = parse_ini_file('./config.ini');
 function db_connect()
 {
     $config = parse_ini_file('./config.ini');
-    // Define connection as a static variable, to avoid connecting more than once
-    static $connection;
+    $connection = mysqli_connect($config['host'], $config['username'], $config['password'], $config['dbname']);
 
-    // Try and connect to the database, if a connection has not been established yet
-    if (!isset($connection)) {
-        // Load configuration as an array. Use the actual location of your configuration file
-        $connection = mysqli_connect($config['host'], $config['username'], $config['password'], $config['dbname']);
-    }
-
-    // If connection was not successful, handle the error
     if ($connection === false) {
-        // Handle error - notify administrator, log to a file, show an error screen, etc.
         return mysqli_connect_error();
     }
     return $connection;
@@ -23,15 +14,9 @@ function db_connect()
 
 function db_query($query)
 {
-    // Connect to the database
     $connection = db_connect();
-
-    // Query the database
-//    $result = mysqli_query($connection, $query);
     $result = mysqli_query($connection,$query) or die($connection);
-    var_dump($result);
-//    mysql_query($query) or die(mysql_error());
-//    echo 'failed. SQL Err: '. mysqli_error($connection);
+    $connection->close();
     return $result;
 }
 
@@ -81,24 +66,11 @@ function insert_payment_request($iaaId, $authority)
 
 function update_payment_request($authority, $refId)
 {
-    echo $authority;
     $dt = new DateTime();
     $now = $dt->format('Y-m-d H:i:s');
-    echo $now;
     $query = "UPDATE `request` SET `status` = 1, `ref_id`= '".$refId."', `modified` = '".$now."' WHERE `authority` = '".$authority."'";
-    $q = "UPDATE `request` SET ref_id= '".$refId ."' WHERE authority = '".$authority."'";
-    $result = db_query($q);
-    var_dump($result);
-    exit;
-    return true;
-}
-
-
-function test ($q) {
-//    $query = "UPDATE `request` SET `status` = 1 WHERE `authority` = '".$auth."'";
-    $result = db_query($q);
-    var_dump($result);
-    return true;
+    $result = db_query($query);
+    return $result;
 }
 
 function find_request_by_authority($authority)

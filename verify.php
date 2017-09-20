@@ -19,15 +19,15 @@ if ($_GET['Status'] == 'OK') {
     ]);
     $req = find_request_by_authority($Authority);
 
-    if ($result->Status == 100 || true) {
+    if ($result->Status == 100) {
         if (!$result -> RefID) {
             $result->RefID = "refId";
         }
         update_payment_request($Authority, $result->RefID);
 
         sold($req['iaaId']);
-        echo 'Transation success. RefID:' . $result->RefID;
-        echo error_handler($result->Status);
+//        echo 'Transation success. RefID:' . $result->RefID;
+//        echo error_handler($result->Status);
     } else {
 //        echo 'Transation failed. Status:' . error_handler($result->Status);
     }

@@ -25,8 +25,9 @@ $config = parse_ini_file('./config.ini');
 //create_request_table();
 $iaaId = $_GET['id'];
 //$txInfo = get_tx_info($iaaId);
-$txInfo = find_request_by_iaa_id($iaaId);
-$amount = $txInfo->amount;
+$txInfo = get_tx_info($iaaId);
+$type = $txInfo->type;
+$amount = $config[$type];
 
 var_dump($txInfo);
 var_dump($amount);

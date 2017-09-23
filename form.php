@@ -19,7 +19,8 @@ $iaaId = $_GET['id'];
 $txInfo = get_tx_info($iaaId);
 $name = $txInfo->user->name . ' ' . $txInfo->user->lastName;
 $desc = $txInfo->desc;
-$amount = $config['amount'];
+$type = $txInfo->type;
+$amount = $config[$type];
 ?>
 
 <div class="ui two column centered grid main-container">

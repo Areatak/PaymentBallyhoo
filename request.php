@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>
-        Ballyhoo|Payment
+        BallyhooAwards.ir|Payment
     </title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="assets/fonts/IRANSANS/iransans.css">
@@ -25,6 +25,8 @@ $config = parse_ini_file('./config.ini');
 //create_request_table();
 $iaaId = $_GET['id'];
 //$txInfo = get_tx_info($iaaId);
+$txInfo = find_request_by_iaa_id($iaaId);
+
 
 
 $MerchantID = $config['merchantId'];;  //Required
@@ -50,7 +52,7 @@ $result = $client->PaymentRequest([
 
 //Redirect to URL You can do it also by creating a form
 if ($result->Status == 100) {
-    insert_payment_request($iaaId, $result->Authority);
+    insert_payment_request($iaaId, $result->Authority, $txInfo->amount);
     header('Location: https://www.zarinpal.com/pg/StartPay/' . $result->Authority);
 } else {
     echo 'ERR: ' . $result->Status;

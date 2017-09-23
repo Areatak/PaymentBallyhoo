@@ -15,7 +15,7 @@ function db_connect()
 function db_query($query)
 {
     $connection = db_connect();
-    $result = mysqli_query($connection,$query) or die($connection);
+    $result = mysqli_query($connection, $query) or die($connection);
     $connection->close();
     return $result;
 }
@@ -44,6 +44,7 @@ function create_request_table()
                           created DATETIME,
                           modified DATETIME,
                           status INT NOT NULL,
+                          amount INT NOT NULL,
                           iaa_id VARCHAR(255) UNIQUE NOT NULL,
                           authority VARCHAR(255) NOT NULL,
                           ref_id VARCHAR(255),
@@ -55,11 +56,11 @@ function create_request_table()
     return false;
 }
 
-function insert_payment_request($iaaId, $authority)
+function insert_payment_request($iaaId, $authority, $amount)
 {
     $dt = new DateTime();
     $now = $dt->format('Y-m-d H:i:s');
-    $query = "INSERT INTO `request` (`status`,`iaa_id`,`authority`,`created`) VALUES (" . 0 . ",'" . $iaaId . "','" . $authority . "','" . $now . "')";
+    $query = "INSERT INTO `request` (`status`,`amount`,`iaa_id`,`authority`,`created`) VALUES (" . 0 . "," . $amount . ",'" . $iaaId . "','" . $authority . "','" . $now . "')";
     $result = db_query($query);
     return $result;
 }
@@ -68,7 +69,7 @@ function update_payment_request($authority, $refId)
 {
     $dt = new DateTime();
     $now = $dt->format('Y-m-d H:i:s');
-    $query = "UPDATE `request` SET `status` = 1, `ref_id`= '".$refId."', `modified` = '".$now."' WHERE `authority` = '".$authority."'";
+    $query = "UPDATE `request` SET `status` = 1, `ref_id`= '" . $refId . "', `modified` = '" . $now . "' WHERE `authority` = '" . $authority . "'";
     $result = db_query($query);
     return $result;
 }
@@ -82,13 +83,29 @@ function find_request_by_authority($authority)
     $ret = null;
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            $ret = array("iaaId" => $row['iaa_id'], "status" => $row['status']);
+            $ret = array("iaaId" => $row['iaa_id'], "status" => $row['status'], "amount" => $row['amount']);
         }
     }
     $connection->close();
     return $ret;
 }
 
+
+function find_request_by_iaa_id($iaaId)
+{
+    $query = "SELECT * FROM request WHERE iaa_id = $iaaId";
+
+    $connection = db_connect();
+    $result = $connection->query($query);
+    $ret = null;
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $ret = array("iaaId" => $row['iaa_id'], "status" => $row['status'], "amount" => $row['amount']);
+        }
+    }
+    $connection->close();
+    return $ret;
+}
 
 function get_tx_info($iaaId)
 {

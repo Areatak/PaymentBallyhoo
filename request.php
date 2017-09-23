@@ -28,12 +28,15 @@ $iaaId = $_GET['id'];
 $txInfo = find_request_by_iaa_id($iaaId);
 $amount = $txInfo->amount;
 
+var_dump($txInfo);
+var_dump($amount);
 
 $MerchantID = $config['merchantId'];;  //Required
 $Description = $_POST['desc'] == null ? 'توضیحات' : $_POST['desc'];  // Required
 $Email = ''; // Optional
 $Mobile = ''; // Optional
 $CallbackURL = $config['paymentAddress'] . '/verify.php';  // Required
+
 
 
 // URL also can be ir.zarinpal.com or de.zarinpal.com

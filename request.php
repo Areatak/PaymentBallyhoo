@@ -29,8 +29,6 @@ $txInfo = get_tx_info($iaaId);
 $type = $txInfo->type;
 $amount = $config[$type];
 
-var_dump($txInfo);
-var_dump($amount);
 
 $MerchantID = $config['merchantId'];;  //Required
 $Description = $_POST['desc'] == null ? 'توضیحات' : $_POST['desc'];  // Required

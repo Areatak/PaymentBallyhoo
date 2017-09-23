@@ -26,11 +26,10 @@ $config = parse_ini_file('./config.ini');
 $iaaId = $_GET['id'];
 //$txInfo = get_tx_info($iaaId);
 $txInfo = find_request_by_iaa_id($iaaId);
-
+$amount = $txInfo->amount;
 
 
 $MerchantID = $config['merchantId'];;  //Required
-$Amount = $config['amount']; //Amount will be based on Toman  - Required
 $Description = $_POST['desc'] == null ? 'توضیحات' : $_POST['desc'];  // Required
 $Email = ''; // Optional
 $Mobile = ''; // Optional
@@ -42,7 +41,7 @@ $client = new SoapClient('https://www.zarinpal.com/pg/services/WebGate/wsdl', ['
 
 $result = $client->PaymentRequest([
     'MerchantID' => $MerchantID,
-    'Amount' => $Amount,
+    'Amount' => $amount,
     'Description' => $Description,
     'Email' => $Email,
     'Mobile' => $Mobile,
@@ -52,7 +51,7 @@ $result = $client->PaymentRequest([
 
 //Redirect to URL You can do it also by creating a form
 if ($result->Status == 100) {
-    insert_payment_request($iaaId, $result->Authority, $txInfo->amount);
+    insert_payment_request($iaaId, $result->Authority, $amount);
     header('Location: https://www.zarinpal.com/pg/StartPay/' . $result->Authority);
 } else {
     echo 'ERR: ' . $result->Status;

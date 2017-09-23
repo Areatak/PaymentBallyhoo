@@ -13,6 +13,8 @@
 
 <?php
 include './funcs.php';
+include './NumToWord_Fa.php';
+$numToWord = new numToWord_Fa();
 $config = parse_ini_file('./config.ini');
 
 $iaaId = $_GET['id'];
@@ -40,6 +42,9 @@ $amount = $config[$type];
                         <label class="input-label"><i class="money icon"></i>مبلغ (ریال)</label>
                         <input disabled=disabled value="<?= $amount ?>" class="iransans" type="text" name="amount"
                                placeholder="مبلغ">
+                        <div style="padding-right: 10px;padding-top: 10px;" class="input-label">
+                            <?= $numToWord->numberToWords($amount) . " تومان"?>
+                        </div>
                     </div>
                     <div class="field">
                         <label class="input-label"><i class="align right icon"></i>توضیحات</label>

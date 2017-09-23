@@ -32,7 +32,6 @@ function db_quote($value)
     return "'" . mysqli_real_escape_string($connection, $value) . "'";
 }
 
-
 function create_request_table()
 {
     $query = "SELECT id FROM request";
@@ -90,7 +89,6 @@ function find_request_by_authority($authority)
     return $ret;
 }
 
-
 function find_request_by_iaa_id($iaaId)
 {
     $query = "SELECT * FROM request WHERE iaa_id = $iaaId";
@@ -138,6 +136,8 @@ function sold($iaaId)
     $response = curl_exec($ch);
     return $response;
 }
+
+
 
 
 ?>

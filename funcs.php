@@ -115,7 +115,7 @@ function get_tx_info($iaaId)
     curl_setopt($ch, CURLOPT_HEADER, 0);
     $response = curl_exec($ch);
     curl_close($ch);
-
+    var_dump($response);
     return json_decode($response);
 }
 

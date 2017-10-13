@@ -39,7 +39,7 @@ $amount = $config[$type];
                                placeholder="نام و نام خانوادگی">
                     </div>
                     <div class="field">
-                        <label class="input-label"><i class="money icon"></i>مبلغ (ریال)</label>
+                        <label class="input-label"><i class="money icon"></i>مبلغ (تومان)</label>
                         <input disabled=disabled value="<?= $amount ?>" class="iransans" type="text" name="amount"
                                placeholder="مبلغ">
                         <div style="padding-right: 10px;padding-top: 10px;" class="input-label">
